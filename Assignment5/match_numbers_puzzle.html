@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match numbers</title>
+
+    <style type="text/css">
+        table {
+           margin: 70px auto;
+        }
+        td {
+            width: 100px;
+            height: 100px;
+            font-size: 50px;
+            text-align: center;
+            margin: 0 0;
+            border: 2px #505050;
+            padding: 5px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var numbers;
+        var pieceIndex1, pieceIndex2, foundIndexes;
+        var closeBackgroundColor = "#5e66c4", openBackgroundColor = "#5cc45a";
+
+        // generate random number between 0 and max - 1
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+        function getPuzzleValues() {
+            var numbers = new Array(17), new_number, count, found;
+            for (var i = 1; i < 17; i++) {
+                found = false;
+                while (!found) {
+                    // get random number from [1, 8]
+                    new_number = 1 + getRandomInt(8);
+                    // count its occurrence in the already assigned fields
+                    count = 0;
+                    for (var j = 1; j < i; j++) {
+                        if (numbers[j] === new_number)
+                            count++;
+                    }
+                    // if occurrence less than 2, we found a new number
+                    if (count < 2) {
+                        numbers[i] = new_number;
+                        found = true;
+                    }
+                }
+            }
+            return numbers;
+        }
+
+        function showAllValues() {
+            var cell;
+            for (i = 1; i < 17; i++) {
+                cell = document.getElementById(i);
+                if (cell) cell.innerHTML = numbers[i];
+            }
+        }
+
+        function hideAllCells() {
+            var i, cell;
+            for (i = 1; i < 17; i++) {
+                cell = document.getElementById(i);
+                cell.style.backgroundColor = closeBackgroundColor;
+                cell.innerHTML = "";
+            }
+        }
+
+        function createPuzzle() {
+            numbers = getPuzzleValues();
+            pieceIndex1 = -1;
+            pieceIndex2 = -1;
+            foundIndexes = [];
+
+            var timeout = setInterval(function() {
+                    if(checkIfFinished())
+                        clearInterval(timeout);
+                }, 100);
+
+            // check generated numbers
+            // var s = "";
+            // for(i=1; i<17; i++)
+            //     s = s + "\nnumbers[" + i + "]=" + numbers[i];
+            // alert("Final:\n"+s);
+
+            // showAllValues();
+            hideAllCells();
+        }
+
+        function revealPiece(cellIndex, cell) {
+            var found = false;
+            for (var i = 1; i < foundIndexes.length; i++) {
+                if (foundIndexes[i] === cellIndex) found = true;
+            }
+            if (!found) {
+                if (cell.style.backgroundColor === closeBackgroundColor) {
+                    // if cell was closed
+                    openCell(cellIndex);
+                    if (pieceIndex1 === -1) pieceIndex1 = cellIndex;
+                    else {
+                        pieceIndex2 = cellIndex;
+                        setTimeout(function () {
+                            checkCells();
+                        }, 500);
+                    }
+                }
+                else {
+                    // if cell was open
+                    closeCell(cellIndex);
+                }
+            }
+        }
+
+        function checkCells() {
+            if (numbers[pieceIndex1] === numbers[pieceIndex2]) {
+                foundIndexes.push(pieceIndex1);
+                foundIndexes.push(pieceIndex2);
+                pieceIndex1 = -1;
+                pieceIndex2 = -1;
+                alert(foundIndexes + foundIndexes.length);
+            }
+            else setTimeout(function() {restartRound();}, 1000);
+        }
+
+        function restartRound() {
+            closeCell(pieceIndex1);
+            closeCell(pieceIndex2);
+            pieceIndex1 = -1;
+            pieceIndex2 = -1;
+        }
+
+        function openCell(cellIndex) {
+            var cell = document.getElementById(cellIndex);
+            cell.style.backgroundColor = openBackgroundColor;
+            cell.innerHTML = numbers[cellIndex];
+        }
+
+        function closeCell(cellIndex) {
+            var cell = document.getElementById(cellIndex);
+            cell.style.backgroundColor = closeBackgroundColor;
+            cell.innerHTML = "";
+        }
+
+        function checkIfFinished() {
+            if (foundIndexes.length === 16) {
+                alert("Congrats!");
+                createPuzzle();
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="createPuzzle()">
+
+<table>
+    <tr>
+        <td id="1" onclick="revealPiece(1,this)"></td>
+        <td id="2" onclick="revealPiece(2,this)"></td>
+        <td id="3" onclick="revealPiece(3,this)"></td>
+        <td id="4" onclick="revealPiece(4,this)"></td>
+    </tr>
+    <tr>
+        <td id="5" onclick="revealPiece(5,this)"></td>
+        <td id="6" onclick="revealPiece(6,this)"></td>
+        <td id="7" onclick="revealPiece(7,this)"></td>
+        <td id="8" onclick="revealPiece(8,this)"></td>
+    </tr>
+    <tr>
+        <td id="9" onclick="revealPiece(9,this)"></td>
+        <td id="10" onclick="revealPiece(10,this)"></td>
+        <td id="11" onclick="revealPiece(11,this)"></td>
+        <td id="12" onclick="revealPiece(12,this)"></td>
+    </tr>
+    <tr>
+        <td id="13" onclick="revealPiece(13,this)"></td>
+        <td id="14" onclick="revealPiece(14,this)"></td>
+        <td id="15" onclick="revealPiece(15,this)"></td>
+        <td id="16" onclick="revealPiece(16,this)"></td>
+    </tr>
+</table>
+
+</body>
+</html>
