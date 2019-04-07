@@ -1,0 +1,28 @@
+#filler {
+    width: 100%;
+    height: 0;
+    background-image: linear-gradient(to bottom, #fffffb, #2f27ae);
+    transition: height 3s ease-out;
+}
+
+#topLine {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    background-color: #2f27ae;
+    transition: transform 3s ease-out;
+}
+
+.section {
+    height: 530px;
+    transition: transform 3s ease-out;
+}
+
+.section:hover #filler {
+    height: 110%;
+    transition: height 3s ease-out;
+}
+
+.section:hover #topLine {
+    transform: translate(0, 530);
+}

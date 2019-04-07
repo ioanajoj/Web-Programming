@@ -1,0 +1,20 @@
+.horizontalLine {
+    width: 300px;
+    height: 3px;
+    background-image: linear-gradient(to right, #888, #FFF, #888);
+}
+
+.verticalLineLeft {
+    width: 3px;
+    height: 300px;
+    background-image: linear-gradient(to bottom, #888, #FFF, #888);
+}
+
+.verticalLineRight {
+    position: absolute;
+    top: 11px;
+    left: 305px;
+    width: 3px;
+    height: 300px;
+    background-image: linear-gradient(to bottom, #888, #FFF, #888);
+}

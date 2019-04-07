@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#header_container {
+    height: 40px;
+    font-weight: bold;
+    width: 100%;
+}
+
+ul {
+    width: 100%;
+    background-color: black;
+    list-style-type: none;
+    margin: 0;
+    display: table;
+}
+
+li {
+    display: table-cell;
+    color: #efefef;
+    font-size: 15px;
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+    vertical-align: middle;
+    padding: 3px 3px 3px 13px;
+    height: 35px;
+}
+
+li.divider_li {
+    width: 1px;
+    background: linear-gradient(to right, black, black, black, #656166, black, black, black);
+}
+
+#search-div {
+    background-clip: border-box;
+    background-color: rgb(255, 255, 255);
+    background-origin: padding-box;
+    display: block;
+}
+
+#search-field {
+    align-items: flex-start;
+    border: none;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    font-stretch: expanded;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: start;
+    height: 24px;
+}
+
+#search-button {
+    align-items: flex-start;
+    background: rgb(255, 255, 255) url(gel-icon-search-dark.svg) no-repeat;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: 16px 16px;
+    border-style: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    float: left;
+    width: 32px;
+    height: 24px;
+}
+
+.under-header {
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-left: 50px;
+    box-sizing: border-box;
+    color: rgb(140, 140, 140);
+    font-weight: 400;
+    font-stretch: extra-expanded;
+    line-height: 22px;
+    text-align: right;
+}
+
+.under-header span {
+    color: rgb(74, 74, 74);
+    float: left;
+    font-weight: 700;
+}
+
+/*
+  *******  GRID NEWS  ********
+*/
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    'menu menu left-top right-top'
+    'menu menu left-bottom right-bottom';
+    grid-gap: 10px;
+    height: 280px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 30px;
+}
+
+.news-big-item { 
+    grid-area: menu;
+    margin-right: 10px;
+    position: relative;
+    background-size: cover;
+}
+
+.news-small-item {
+    margin-left: 10px;
+    position: relative;
+    background-size: cover;
+}
+
+.text-content-big {
+    background-image: linear-gradient(transparent,rgba(0,0,0,0.8));
+    background-position-y: -1px;
+    box-sizing: border-box;
+    display: block;
+    font-stretch: extra-expanded;
+    line-height: 20px;
+    padding: 16px;
+    text-align: left;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+}
+
+.text-content-small {
+    background-image: linear-gradient(transparent,rgba(0,0,0,0.8));
+    background-position-y: -1px;
+    box-sizing: border-box;
+    display: block;
+    font-stretch: extra-expanded;
+    line-height: 15px;
+    padding: 16px;
+    text-align: left;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+}
+
+.news-title {
+    color: white;
+    font-size: 24px;
+    text-align: left;
+}
+
+.news-subtitle {
+    color: whitesmoke;
+    font-size: 12px;
+}
+
+.news-category {
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+.news-small-item .news-title {
+    color: white;
+    font-size: 18px;
+    text-align: left;
+}
+
+.news-small-item .news-subtitle {
+    display: none;
+}
+
+.news-small-item .news-category {
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+/**
+  *******  WEATHER  *******
+ */
+
+#edit-button {
+    border: none;
+    padding: 8px;
+    font-size: 10px;
+    background-color: rgb(240, 240, 240);
+    background-origin: padding-box;
+    background-size: auto;
+    background-clip: border-box;
+    background-position-x: 0;
+    background-position-y: 0;
+    margin-left: 20px;
+    cursor: pointer;
+    line-height: 10px;
+    position: relative;
+    top: -5px;
+    text-decoration-line: none;
+    color: rgb(140, 140, 140);
+    text-decoration-style: solid;
+}
+
+/**
+    ********  WEATHER LIST  *******
+ */
+
+#weather-list {
+    margin-top: 70px;
+    background-color: white;
+}
+
+#weather-list li {
+    position: relative;
+    color: black;
+    width: 100px;
+    display: list-item;
+    float: left;
+}
+
+.weather-content {
+    box-sizing: border-box;
+    display: block;
+    font-stretch: extra-expanded;
+    line-height: 15px;
+    padding: 16px;
+    text-align: right;
+    position: absolute;
+    top: -10px;
+    left: 60px;
+}
+
+.weather-content .weather-day, .weather-max {
+    font-weight: bold;
+}
+
+/**
+    ****** GRID 2 CONTAINER ********
+ */
+
+#grid2-container {
+    margin: 50px -5px;
+    background-image: url(island.jpg);
+    background-size: cover;
+    display: grid;
+    grid-template-areas:
+    'left-top empty right-top'
+    'content1 content2 content3';
+    grid-gap: 10px;
+    height: 280px;
+}
+
+.bbc-reel {
+
+}
+
+#bbc-reel-header {
+    font-size: 35px;
+    color: white;
+}
+
+/*#shade {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*position: absolute;*/
+    /*background: linear-gradient(transparent,rgba(0,0,0,0.8));*/
+    /*filter: blur(3px);*/
+/*}*/
