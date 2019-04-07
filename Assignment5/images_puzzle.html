@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Match numbers</title>
+    <title>Match images</title>
 
     <style type="text/css">
         table {
@@ -15,7 +15,6 @@
             text-align: center;
             margin: 0 0;
             border: 2px #505050;
-            padding: 5px;
         }
     </style>
 
@@ -51,20 +50,11 @@
             return numbers;
         }
 
-        function showAllValues() {
-            var cell;
-            for (i = 1; i < 17; i++) {
-                cell = document.getElementById(i);
-                if (cell) cell.innerHTML = numbers[i];
-            }
-        }
-
         function hideAllCells() {
             var i, cell;
             for (i = 1; i < 17; i++) {
                 cell = document.getElementById(i);
                 cell.style.backgroundColor = "red";
-                cell.innerHTML = "";
             }
         }
 
@@ -111,14 +101,14 @@
 
         function checkCells() {
             if (numbers[pieceIndex1] === numbers[pieceIndex2]) {
-                document.getElementById(pieceIndex1).style.backgroundColor = "green";
-                document.getElementById(pieceIndex2).style.backgroundColor = "green";
                 foundIndexes.push(pieceIndex1);
                 foundIndexes.push(pieceIndex2);
                 pieceIndex1 = -1;
                 pieceIndex2 = -1;
             }
-            else setTimeout(function() {restartRound();}, 100);
+            else setTimeout(function () {
+                restartRound();
+            }, 100);
         }
 
         function restartRound() {
@@ -129,15 +119,19 @@
         }
 
         function openCell(cellIndex) {
-            var cell = document.getElementById(cellIndex);
-            cell.style.backgroundColor = "blue";
-            cell.innerHTML = numbers[cellIndex];
+            var img = document.createElement("img");
+            img.setAttribute("width", "100%");
+            img.setAttribute("height", "100%");
+            img.setAttribute("align", "center");
+            img.setAttribute("src", numbers[cellIndex] + ".png");
+            document.getElementById(cellIndex).appendChild(img);
+            document.getElementById(cellIndex).style.backgroundColor = "white";
         }
 
         function closeCell(cellIndex) {
             var cell = document.getElementById(cellIndex);
+            cell.removeChild(cell.firstChild);
             cell.style.backgroundColor = "red";
-            cell.innerHTML = "";
         }
 
         function checkIfFinished() {
