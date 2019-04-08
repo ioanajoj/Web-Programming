@@ -1,0 +1,28 @@
+#container {
+    width: 100%;
+    align-content: center;
+}
+
+#header {
+    width: 100%;
+    min-width: 20%;
+    text-align: center;
+    background-color: bisque;
+    vertical-align: top;
+    align-self: center;
+}
+
+#menu {
+    width: 30%;
+    min-width: 10%;
+    text-align: center;
+    background-color: #505050;
+    float:left;
+}
+
+#content {
+    width: 70%;
+    min-width: 50%;
+    background-color: #2dae2f;
+    float:right;
+}

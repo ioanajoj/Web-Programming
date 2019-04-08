@@ -29,7 +29,8 @@
         }
 
         function getPuzzleValues() {
-            var numbers = new Array(17), new_number, count, found;
+            var numbers = new Array(17);
+            var new_number, count, found;
             for (var i = 1; i < 17; i++) {
                 found = false;
                 while (!found) {
@@ -63,7 +64,9 @@
             var i, cell;
             for (i = 1; i < 17; i++) {
                 cell = document.getElementById(i);
-                cell.style.backgroundColor = "red";
+                // cell.style.backgroundColor = "red";
+                // cell.style.backgroundColor = "#4286f4";
+                cell.style.backgroundColor = "rgb(66,134,244)";
                 cell.innerHTML = "";
             }
         }
@@ -96,7 +99,7 @@
                 if (foundIndexes[i] === cellIndex)
                     return;
             }
-            if (cell.style.backgroundColor === "red") {
+            if (cell.style.backgroundColor === "rgb(66, 134, 244)") {
                 // if cell was closed
                 openCell(cellIndex);
                 if (pieceIndex1 === -1) pieceIndex1 = cellIndex;
@@ -111,8 +114,8 @@
 
         function checkCells() {
             if (numbers[pieceIndex1] === numbers[pieceIndex2]) {
-                document.getElementById(pieceIndex1).style.backgroundColor = "green";
-                document.getElementById(pieceIndex2).style.backgroundColor = "green";
+                document.getElementById(pieceIndex1).style.backgroundColor = 'rgb(123, 216, 129)';
+                document.getElementById(pieceIndex2).style.backgroundColor = 'rgb(123, 216, 129)';
                 foundIndexes.push(pieceIndex1);
                 foundIndexes.push(pieceIndex2);
                 pieceIndex1 = -1;
@@ -130,13 +133,13 @@
 
         function openCell(cellIndex) {
             var cell = document.getElementById(cellIndex);
-            cell.style.backgroundColor = "blue";
+            cell.style.backgroundColor = 'rgb(244, 92, 65)';
             cell.innerHTML = numbers[cellIndex];
         }
 
         function closeCell(cellIndex) {
             var cell = document.getElementById(cellIndex);
-            cell.style.backgroundColor = "red";
+            cell.style.backgroundColor = 'rgb(' + 66 + ',' + 134 + ',' + 244 + ')';
             cell.innerHTML = "";
         }
 
