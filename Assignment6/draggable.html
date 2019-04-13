@@ -5,32 +5,23 @@
     <title>Draggable Divs</title>
 
     <style type="text/css">
-        .draggable_div {
+        div {
             width: 100%;
             height: 40px;
             margin: 5px auto;
         }
     </style>
-
     <script src="jquery-2.0.3.js"></script>
-    <script>
-          $(function() {
-            $('#container').sortable({
-                items: '.draggable_div'
-            });
-        });
-    </script>
+    <script src="sortable_divs.js"></script>
 </head>
 <body>
 
-<div id = "container">
-    <div class = "draggable_div" style="background-color: #2dae2f"></div>
-    <div class = "draggable_div" style="background-color: #e5d94d"></div>
-    <div class = "draggable_div" style="background-color: #3476ae"></div>
-    <div class = "draggable_div" style="background-color: #ae1403"></div>
-    <div class = "draggable_div" style="background-color: #652eae"></div>
-    <div class = "draggable_div" style="background-color: #1f00ae"></div>
-</div>
+<div id = "draggable_div1" style="background-color: #2dae2f; top: 5px;"></div>
+<div id = "draggable_div2" style="background-color: #e5d94d; top: 50px;"></div>
+<div id = "draggable_div3" style="background-color: #3476ae; top: 95px;"></div>
+<div id = "draggable_div4" style="background-color: #ae1403; top: 140px;"></div>
+<div id = "draggable_div5" style="background-color: #652eae; top: 185px;"></div>
+<div id = "draggable_div6" style="background-color: #1f00ae; top: 230px;"></div>
 
 </body>
 </html>
