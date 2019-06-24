@@ -23,18 +23,6 @@ public class planets extends HttpServlet {
         PlanetController planetController = new PlanetController();
         List<Planet> planetList = planetController.getPlanets();
 
-//        HttpSession httpSession = request.getSession(true);
-//        int planet_index;
-//        try{
-//            planet_index = (int)httpSession.getAttribute("planet_index");
-//            planet_index += 3;
-//        }
-//        catch (IllegalStateException ex) {
-//            planet_index = 0;
-//        }
-//        httpSession.setAttribute("planet_index", planet_index);
-//        planetList.subList(planet_index, planet_index + 3);
-
         String json = new Gson().toJson(planetList);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
