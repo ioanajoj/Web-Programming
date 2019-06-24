@@ -1,0 +1,46 @@
+CREATE TABLE Planets (
+    ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    Name VARCHAR(50),
+    Color VARCHAR(50),
+    Description VARCHAR(50)
+);
+
+CREATE TABLE Civilizations (
+    ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    Name VARCHAR(50),
+    HomePlanetID INT REFERENCES Planets(ID),
+    Type INT
+);
+
+CREATE TABLE Astronauts (
+    ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    Name VARCHAR(50),
+    CivilizationID INT REFERENCES Civilizations(ID)
+);
+
+CREATE TABLE Expeditions (
+    ID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    AstronautID INT REFERENCES Astronauts(ID),
+    PlanetsID INT REFERENCES Planets(ID),
+    DeathProbability FLOAT
+);
+
+INSERT INTO Planets (Name, Color, Description) VALUES ('Earth', '#3f7bdb', 'Humans'),
+                                                      ('Venus', '#e09823', 'Beauty'),
+                                                      ('Saturn', '#ddc9a8', 'Elegant circles'),
+                                                      ('Uranus', '#d4f1f4', 'Perlish'),
+                                                      ('Neptune', '#2c44ba', 'Bruised'),
+                                                      ('Pluto', '#efe4cb', 'Our favorite dwarf planet since 2006'),
+                                                      ('Mars', '#e87427', 'Next Earth'),
+                                                      ('Mercury', '#a8a4a1', 'Smallest in the Solar System');
+
+INSERT INTO Civilizations (Name, HomePlanetID, Type) VALUES ('Human', 1, 1),
+                                                            ('Martians', 7, 2),
+                                                            ('Animated Dogs', 6, 0);
+
+INSERT INTO Astronauts (Name, CivilizationID) VALUES ('Alice', 1),
+                                                     ('Bob', 2),
+                                                     ('Pluto', 3);
+
+SELECT A.Name FROM Astronauts A WHERE A.Name = 'Alice';
+SELECT P.ID, P.Name, P.Color, P.Description FROM Planets P;
